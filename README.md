@@ -16,13 +16,37 @@ int main() {
 
 ## Installation
 
-Header-only, zero dependance. Copier le fichier et inclure :
+Header-only, zero dependance. Plusieurs options :
+
+### CMake FetchContent (recommande)
+
+```cmake
+include(FetchContent)
+FetchContent_Declare(
+    prism
+    GIT_REPOSITORY https://github.com/jojo8356/prism.git
+    GIT_TAG        v0.1.0
+)
+FetchContent_MakeAvailable(prism)
+
+target_link_libraries(your_target PRIVATE prism::prism)
+```
+
+### vcpkg
 
 ```bash
-# Copier dans votre projet
-cp -r include/prism/ your_project/include/
+vcpkg install prism
+```
 
-# Compiler
+```cmake
+find_package(prism CONFIG REQUIRED)
+target_link_libraries(your_target PRIVATE prism::prism)
+```
+
+### Copie manuelle
+
+```bash
+cp -r include/prism/ your_project/include/
 g++ -std=c++17 -I include main.cpp -o main
 ```
 

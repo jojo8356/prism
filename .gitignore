@@ -1,0 +1,6 @@
+build/
+*.o
+demo
+test_prism
+test_phase*
+!test_phase*.cpp
